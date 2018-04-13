@@ -17,7 +17,6 @@ public class OrderDto extends BaseBean {
     private String body; // 商品描述(如：腾讯充值中心-QQ会员充值)
     private String detail; // 商品详情
     private String attach; // 附加数据
-    private String key;
     private String sign;
     private String spbillCreateIp;          // 终端IP
     private Integer limitCreditPay;          //限定用户使用时能否使用信用卡，值为1，禁用信用卡，值为0不限制
@@ -97,14 +96,6 @@ public class OrderDto extends BaseBean {
         this.attach = attach;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
     public String getSign() {
         return sign;
     }
@@ -170,7 +161,6 @@ public class OrderDto extends BaseBean {
                 ", body='" + body + '\'' +
                 ", detail='" + detail + '\'' +
                 ", attach='" + attach + '\'' +
-                ", key='" + key + '\'' +
                 ", sign='" + sign + '\'' +
                 ", spbillCreateIp='" + spbillCreateIp + '\'' +
                 ", limitCreditPay=" + limitCreditPay +

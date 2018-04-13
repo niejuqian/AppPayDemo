@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.alipay.sdk.app.PayTask;
-import com.cunpiao.bean.AliTradeResponse;
 import com.cunpiao.bean.WxTradeResponse;
 import com.cunpiao.util.Constants;
 import com.cunpiao.util.JsonUtils;
@@ -45,8 +44,7 @@ public class PayUtil {
         mWxApi.sendReq(req);
     }
 
-    public static void aliPay(Activity activity, AliTradeResponse response){
-        String orderInfo = response.getResultBody();
+    public static void aliPay(Activity activity, String orderInfo){
         Logger.i("======>>>请求参数：" + orderInfo);
         Runnable runnable = () -> {
             try {

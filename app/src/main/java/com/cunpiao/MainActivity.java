@@ -2,14 +2,15 @@ package com.cunpiao;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.cunpiao.bean.OrderDto;
+import com.cunpiao.bean.PayResponse;
 import com.cunpiao.bean.WxTradeResponse;
 import com.cunpiao.bll.PayBll;
 import com.cunpiao.bll.PayUtil;
+import com.cunpiao.util.JsonUtils;
 import com.cunpiao.util.StringUtils;
 import com.cunpiao.util.ToastUtil;
 
@@ -58,34 +59,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         OrderDto req = new OrderDto();
-        req.setMerchId("5624799463");
         req.setPayWay(payWay);
         req.setSubPayWay(subPayWay);
         req.setTotalFee(tradeAmount);
         req.setMchTradeNo(StringUtils.uuid());
         req.setSubject("鲸鱼智投-支付");
         req.setBody("鲸鱼智投优选产品");
-        req.setKey("dddd");
-        req.setSign("dddd");
         req.setLimitCreditPay(1);
         req.setNotifyUrl("http:www.baidu.com");
         req.setNonceStr(StringUtils.uuid());
         req.setDeviceInfo("WEB");
-        if (payWay.equals("ALIPAY")) {
-            payBll.aliOrder(this,req,obj->{
-                ToastUtil.showToast("下单成功，开始支付");
-                PayUtil.aliPay(MainActivity.this,obj);
-            });
-        } else if (payWay.equals("WECHAT")) {
-            payBll.order(this,req,obj -> {
-                ToastUtil.showToast("下单成功，开始支付");
+        payBll.order(this,req,obj -> {
+            ToastUtil.showToast("下单成功，开始支付");
+            if (payWay.equals("ALIPAY")) {
+                PayUtil.aliPay(MainActivity.this,obj.getOrderStr());
+            } else if (payWay.equals("WECHAT")) {
                 //微信支付
                 wxPay(obj);
-            });
-        }
+            }
+        });
     }
 
-    private void wxPay(WxTradeResponse response){
-        PayUtil.wxPay(response);
+    private void wxPay(PayResponse response){
+        WxTradeResponse tradeResponse = JsonUtils.fromJson(response.getOrderStr(),WxTradeResponse.class);
+        PayUtil.wxPay(tradeResponse);
     }
 }

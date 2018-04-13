@@ -56,4 +56,6 @@ dependencies {
     compile presentationDependencies.rxjava
     compile presentationDependencies.rxandroid
     compile presentationDependencies.retrofit2AdapterRxjava
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+
 }

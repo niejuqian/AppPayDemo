@@ -3,6 +3,7 @@ package com.cunpiao.bll;
 
 import com.cunpiao.bean.AliTradeResponse;
 import com.cunpiao.bean.OrderDto;
+import com.cunpiao.bean.PayResponse;
 import com.cunpiao.bean.WxTradeResponse;
 import com.cunpiao.network.callback.HttpResult;
 
@@ -24,15 +25,6 @@ public interface ServiceApi {
      * @return
      */
     @POST("/pay/order")
-    Observable<HttpResult<WxTradeResponse>> order(@Body OrderDto body);
-
-
-    /**
-     * 支付
-     * @param body
-     * @return
-     */
-    @POST("/pay/order")
-    Observable<HttpResult<AliTradeResponse>> aliOrder(@Body OrderDto body);
+    Observable<HttpResult<PayResponse>> order(@Body OrderDto body);
 
 }
