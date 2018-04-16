@@ -1,10 +1,8 @@
 package com.cunpiao.bll;
 
 
-import com.cunpiao.bean.AliTradeResponse;
 import com.cunpiao.bean.OrderDto;
 import com.cunpiao.bean.PayResponse;
-import com.cunpiao.bean.WxTradeResponse;
 import com.cunpiao.network.callback.HttpResult;
 
 import retrofit2.http.Body;

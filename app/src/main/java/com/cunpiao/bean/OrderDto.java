@@ -158,6 +158,7 @@ public class OrderDto extends BaseBean {
                 ", subPayWay='" + subPayWay + '\'' +
                 ", totalFee=" + totalFee +
                 ", mchTradeNo='" + mchTradeNo + '\'' +
+                ", subject='" + subject + '\'' +
                 ", body='" + body + '\'' +
                 ", detail='" + detail + '\'' +
                 ", attach='" + attach + '\'' +
@@ -166,6 +167,7 @@ public class OrderDto extends BaseBean {
                 ", limitCreditPay=" + limitCreditPay +
                 ", notifyUrl='" + notifyUrl + '\'' +
                 ", nonceStr='" + nonceStr + '\'' +
+                ", deviceInfo='" + deviceInfo + '\'' +
                 '}';
     }
 }

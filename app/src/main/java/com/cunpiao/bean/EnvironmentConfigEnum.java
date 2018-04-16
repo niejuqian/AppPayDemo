@@ -66,7 +66,7 @@ public enum EnvironmentConfigEnum {
 
         @Override
         public String getHost() {
-            return "http://192.168.10.143:8080/";
+            return "http://192.168.1.10:8080/";
         }
 
         @Override
