@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 def presentationDependencies = rootProject.ext.presentationDependencies;
 android {
@@ -57,5 +58,7 @@ dependencies {
     compile presentationDependencies.rxandroid
     compile presentationDependencies.retrofit2AdapterRxjava
     compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
 }

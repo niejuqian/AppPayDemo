@@ -1,7 +1,6 @@
 package com.cunpiao;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -16,25 +15,28 @@ import com.cunpiao.util.Logger;
 import com.cunpiao.util.StringUtils;
 import com.cunpiao.util.ToastUtil;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class MainActivity extends BaseAppCompatActivity {
+    @BindView(R.id.trade_amount_et)
     EditText tradeAmountEt;
+    @BindView(R.id.zfb_rbtn)
     RadioButton zfbRbtn;
+    @BindView(R.id.wx_rbtn)
     RadioButton wxRbtn;
 
     PayBll payBll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState,R.layout.activity_main);
         payBll = new PayBll();
-        tradeAmountEt = (EditText) findViewById(R.id.trade_amount_et);
-        zfbRbtn = (RadioButton) findViewById(R.id.zfb_rbtn);
-        wxRbtn = (RadioButton) findViewById(R.id.wx_rbtn);
-        findViewById(R.id.start_pay_btn).setOnClickListener(view -> {
-            startPay();
-        });
     }
 
+    @OnClick(R.id.setting_btn)
+    void setting(){
+        startActivity(SettingActivity.class);
+    }
 
 
     private String getPayWay(){
@@ -51,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         String tradeAmountStr = tradeAmountEt.getText().toString();
         return Integer.valueOf(StringUtils.isBlank(tradeAmountStr.trim()) ? "0" : tradeAmountStr.trim());
     }
-    void startPay(){
+
+    @OnClick(R.id.start_pay_btn)
+    public void startPay(){
         int tradeAmount = getTradeAmount();
         String payWay = getPayWay();
         String subPayWay = "APP";

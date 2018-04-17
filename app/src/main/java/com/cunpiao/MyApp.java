@@ -42,6 +42,7 @@ public class MyApp extends Application {
             environmentConfigEnum = EnvironmentConfigEnum.getEnum(key);
         }
         Logger.e("================environment=" + key);
+        PreferenceHelper.setValue("request_address",environmentConfigEnum.getHost());
         CommonHeaderParam commonParam = new CommonHeaderParam();
         RetrofitControl.Builder builder = new RetrofitControl.Builder()
                 .setApiClass(ServiceApi.class)

@@ -16,4 +16,5 @@
     <!--密码输入框文字颜色-->
     <color name="password_txt_color">#000000</color>
     <color name="navpage">#FFE1E8EB</color>
+    <color name="red">#ff0000</color>
 </resources>

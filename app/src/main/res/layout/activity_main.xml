@@ -3,6 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <Button
+        android:id="@+id/setting_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置"/>
     <EditText
         android:id="@+id/trade_amount_et"
         android:layout_width="match_parent"
@@ -13,6 +18,7 @@
         android:inputType="phone"
         android:textColor="@color/tx_black"/>
     <RadioGroup
+        android:id="@+id/rg_layout"
         android:layout_below="@id/trade_amount_et"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp50"
@@ -32,6 +38,7 @@
             android:layout_marginLeft="@dimen/dp50"
             android:text="微信"/>
     </RadioGroup>
+
     <Button
         android:id="@+id/start_pay_btn"
         android:layout_width="match_parent"
